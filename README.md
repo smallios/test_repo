@@ -1,3 +1,23 @@
+<!----- Conversion time: 1.803 seconds.
+
+
+Using this Markdown file:
+
+1. Cut and paste this output into your source file.
+2. See the notes and action items below regarding this conversion run.
+3. Check the rendered output (headings, lists, code blocks, tables) for proper
+   formatting and use a linkchecker before you publish this page.
+
+Conversion notes:
+
+* GD2md-html version 1.0β13
+* Fri Dec 07 2018 09:18:20 GMT-0800 (PST)
+* Source doc: https://docs.google.com/open?id=1CmRJ6JLkAdi7kQasbTpEZmxgk7TaVqeLxGKtyrJptSM
+----->
+
+
+
+
 1.  Description
 
 This is a simple alignment and error checking protocol for asynchronous 16Gb/s links. The local clock is running at 240MHz and the link clock at 250 MHz. Crossing between clock domains and aligning the links are based on the insertion of a padding word.  
@@ -436,3 +456,7 @@ buffbypass_rx_done_out</strong>
    </td>
   </tr>
 </table>
+
+
+
+<!-- GD2md-html version 1.0β13 -->
