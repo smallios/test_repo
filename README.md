@@ -1,23 +1,24 @@
-# Description
+1.  Description
 
-This is a simple alignment and error checking protocol for asynchronous 16Gb/s links. The local clock is running at 240MHz and the link clock at 250 MHz. Crossing between clock domains and aligning the links are based on the insertion of a padding word (currently 7
+This is a simple alignment and error checking protocol for asynchronous 16Gb/s links. The local clock is running at 240MHz and the link clock at 250 MHz. Crossing between clock domains and aligning the links are based on the insertion of a padding word.  
 
-The 16 Gbps links firmware is a lightweight, link-layer protocol that can be used to move \
-data point-to-point across one or more high-speed serial lanes. It supports simplex operation with \
-continues data transfer. The links are asynchronous, meaning that the main algorithmic logic is \
-clocked with a lower frequency than the link clock, allowing more flexibility when choosing the \
-logic clock. This is achieved by using asynchronous FIFOs in the receiving and transmitting sides. \
-	To compensate for the difference of the frequency, padding words are being injected on the transmitting side and are stripped away on the receiving side. The link initialization and error handling are also based on the insertion and checking of those padding words. For testing purposes the local clock is running at 240 MHz and the link clock at 250 MHz. The link encoding is the 64b/66b encoding that transforms 64-bit data to 66-bit line code, to provide enough state changes to allow reasonable clock recovery and alignment of the data stream at the receiver [4]. The protocol overhead of 64b/66b encoding is 2 coding bits for every 64 payload bits or 3.125%. This makes the encoding considerably more efficient than the 25% overhead of the previously-used 8b/10b encoding scheme, which added 2 coding bits to every 8 payload bits.
+The 16 Gbps links firmware is a lightweight, link-layer protocol that can be used to move 
 
+data point-to-point across one or more high-speed serial lanes. It supports simplex operation with continues data transfer. The links are asynchronous, meaning that the main algorithmic logic is clocked with a lower frequency than the link clock, allowing more flexibility when choosing the logic clock. This is achieved by using asynchronous FIFOs in the receiving and transmitting sides.
 
-## Asynchronous links structure :
-
-TXDATA_IN → ADD CRCs→ TX FIFO → INJECT PADS & IDLES → MGT 
-
-MGT → REMOVE PADS → RX BRAM → CRC CHECK → RX_DATA_OUT
+To compensate for the difference of the frequency, padding words are being injected on the transmitting side and are stripped away on the receiving side. The link initialization and error handling are also based on the insertion and checking of those padding words. For testing purposes the local clock is running at 240 MHz and the link clock at 250 MHz. The link encoding is the 64b/66b encoding that transforms 64-bit data to 66-bit line code, to provide enough state changes to allow reasonable clock recovery and alignment of the data stream at the receiver [4]. The protocol overhead of 64b/66b encoding is 2 coding bits for every 64 payload bits or 3.125%. This makes the encoding considerably more efficient than the 25% overhead of the previously-used 8b/10b encoding scheme, which added 2 coding bits to every 8 payload bits.
 
 
-## Link initialization and error handling
+
+1.  Asynchronous links structure
+
+TXDATA_IN **→ **ADD CRCs**→** TX FIFO **→** INJECT PADS & IDLES **→** MGT 
+
+MGT **→** REMOVE PADS **→** RX BRAM **→** CRC CHECK **→** RX_DATA_OUT
+
+
+
+1.  Link initialization and error handling
 
 The link bring-up and error detection is based on the generic 2-bit 64b/66b encoding header, combined with the periodically sending of a padding word and CRC blocks. 
 
@@ -26,12 +27,14 @@ An illegal header value or a bad PAD/IDLE word is considered an error. Receiving
 After the bit alignment is done the link_initialization_done indicator is set and the link error indicator is monitored. The link error indicator is not sensitive to single errors. Receiving however more than 2 errors per 64 words will force the indicator to go down and a re-initialization procedure to commence.
 
 
-## Data quality
+
+1.  Data quality
 
 To ensure the quality of the data we periodically inject a CRC-32 checksum. A high-to-low transition of the data valid bit triggers the CRC word insertion before we cross to the link clock domain. On the receiving end, after crossing to the local clock domain, the CRC word is checked for errors. A CRC error indicator and a CRC 8-bit counter is implemented. After an error is received the CRC error indicator will remain set until we issue a reset error counter command.
 
 
-## Data format 
+
+1.  Data format 
 
 The format of the special words (PADDING/IDLE/CRC) are in agreement with the Aurora protocol.  
 
@@ -249,12 +252,13 @@ The format of the special words (PADDING/IDLE/CRC) are in agreement with the Aur
 
 
 
-## INTERFACE PORTS/GENERICS description
 
+1.  INTERFACE PORTS/GENERICS description
 
 <table>
   <tr>
-   <td colspan="2" ><strong>GENERICS</strong>
+   <td colspan="2" >
+<strong>GENERICS</strong>
    </td>
   </tr>
   <tr>
@@ -432,9 +436,3 @@ buffbypass_rx_done_out</strong>
    </td>
   </tr>
 </table>
-
-
-          \
- \
-    \
-
