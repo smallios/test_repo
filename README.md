@@ -1,31 +1,3 @@
-<!----- Conversion time: 1.528 seconds.
-
-
-Using this Markdown file:
-
-1. Cut and paste this output into your source file.
-2. See the notes and action items below regarding this conversion run.
-3. Check the rendered output (headings, lists, code blocks, tables) for proper
-   formatting and use a linkchecker before you publish this page.
-
-Conversion notes:
-
-* GD2md-html version 1.0β13
-* Fri Dec 07 2018 08:27:52 GMT-0800 (PST)
-* Source doc: https://docs.google.com/open?id=1CmRJ6JLkAdi7kQasbTpEZmxgk7TaVqeLxGKtyrJptSM
-* This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server.
------>
-
-
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 1.</p>
-<ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
-
-<p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
-
-<p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
-
-
-
 # Description
 
 This is a simple alignment and error checking protocol for asynchronous 16Gb/s links. The local clock is running at 240MHz and the link clock at 250 MHz. Crossing between clock domains and aligning the links are based on the insertion of a padding word (currently 7
@@ -63,10 +35,217 @@ To ensure the quality of the data we periodically inject a CRC-32 checksum. A hi
 
 The format of the special words (PADDING/IDLE/CRC) are in agreement with the Aurora protocol.  
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/links-readme-md0.png). Store image on your image server and adjust path/filename if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-
-![alt_text](images/links-readme-md0.png "image_tooltip")
+<table>
+  <tr>
+   <td><strong>Valid Bit</strong>
+   </td>
+   <td>
+   </td>
+   <td><strong>Header</strong>
+   </td>
+   <td><strong>CODE</strong>
+   </td>
+   <td colspan="2" ><strong>PAYLOAD</strong>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>1
+   </td>
+   <td>
+   </td>
+   <td>01
+   </td>
+   <td colspan="3" >64 bit DATA
+   </td>
+   <td><strong>DATA</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>1
+   </td>
+   <td>
+   </td>
+   <td>01
+   </td>
+   <td colspan="3" >64 bit DATA
+   </td>
+   <td><strong>DATA</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>1
+   </td>
+   <td>
+   </td>
+   <td>01
+   </td>
+   <td colspan="3" >64 bit DATA
+   </td>
+   <td><strong>DATA</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>-
+   </td>
+   <td>
+   </td>
+   <td>10
+   </td>
+   <td>0x78
+   </td>
+   <td colspan="2" >56 bit Padding word
+   </td>
+   <td><strong>CDR</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>1
+   </td>
+   <td>
+   </td>
+   <td>01
+   </td>
+   <td colspan="3" >64 bit DATA
+   </td>
+   <td><strong>DATA</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>1
+   </td>
+   <td>
+   </td>
+   <td>01
+   </td>
+   <td colspan="3" >64 bit DATA
+   </td>
+   <td><strong>DATA</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>.
+   </td>
+   <td>
+   </td>
+   <td>.
+   </td>
+   <td colspan="3" >
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>.
+   </td>
+   <td>
+   </td>
+   <td>.
+   </td>
+   <td colspan="3" >
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>.
+   </td>
+   <td>
+   </td>
+   <td>.
+   </td>
+   <td colspan="3" >
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>1
+   </td>
+   <td>
+   </td>
+   <td>01
+   </td>
+   <td colspan="3" >64 bit DATA
+   </td>
+   <td><strong>DATA</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>0
+   </td>
+   <td>
+   </td>
+   <td>10
+   </td>
+   <td>0xD2
+   </td>
+   <td>0x00
+   </td>
+   <td>CRC-32 bit
+   </td>
+   <td><strong>CRC</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>0
+   </td>
+   <td>
+   </td>
+   <td>10
+   </td>
+   <td>0x78
+   </td>
+   <td colspan="2" >56 bit Padding word
+   </td>
+   <td><strong>IDLE</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>0
+   </td>
+   <td>
+   </td>
+   <td>10
+   </td>
+   <td>0x78
+   </td>
+   <td colspan="2" >56 bit Padding word
+   </td>
+   <td><strong>IDLE</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>0
+   </td>
+   <td>
+   </td>
+   <td>10
+   </td>
+   <td>0x78
+   </td>
+   <td colspan="2" >56 bit Padding word
+   </td>
+   <td><strong>IDLE</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>0
+   </td>
+   <td>
+   </td>
+   <td>10
+   </td>
+   <td>0x78
+   </td>
+   <td colspan="2" >56 bit Padding word
+   </td>
+   <td><strong>IDLE</strong>
+   </td>
+  </tr>
+</table>
 
 
 
@@ -259,6 +438,3 @@ buffbypass_rx_done_out</strong>
  \
     \
 
-
-
-<!-- GD2md-html version 1.0β13 -->
